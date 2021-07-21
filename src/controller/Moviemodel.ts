@@ -6,7 +6,6 @@ export const getMovieNames = async (req: Request, res: Response)=>{
     try {
         const response = await fetchAllMovie();
 
-
         if (!response) {
             res.status(404).json({ message: " Error data not found"})
         }

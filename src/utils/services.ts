@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { FILM } from "../type/types";
+import { CommentModel } from "../controller/comment.model";
 
 const uri ="https://swapi.dev/api/films";
 
@@ -12,6 +13,8 @@ export const fetchAllMovie = async (): Promise<AxiosResponse<FILM>> => {
             var last: any = new Date(a.release_date);
             return last - first;
         })
+
+        
         const result = results.map((films: FILM, index:number) => {
             return ({ "id": index + 1, tilte: films.title, opening_crawl: films.opening_crawl})
         })
