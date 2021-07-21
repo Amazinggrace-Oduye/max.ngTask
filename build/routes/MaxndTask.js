@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var router = express_1.Router();
+var Moviemodel_1 = require("../controller/Moviemodel");
+var NameCharacter_1 = require("../controller/NameCharacter");
+var characterModel_1 = require("../controller/characterModel");
+router.get("/", Moviemodel_1.getMovieNames);
+router.get("/singleMovie", NameCharacter_1.getCharacterByName);
+router.get("/characters/:id", characterModel_1.getMovieCharacters);
+exports.default = router;
