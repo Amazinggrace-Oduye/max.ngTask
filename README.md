@@ -10,6 +10,8 @@ https://maxng-assesment.herokuapp.com/movie/1
 https://maxng-assesment.herokuapp.com/movie/singleMovie?search=A New 
 
 ### Get movie by sort field name or height,direction asc or desc and filter by gender
+https://maxng-assesment.herokuapp.com/movie/characters/1?sortBy=name
+
 https://maxng-assesment.herokuapp.com/movie/characters/1?sortBy=height&gender=female&direction=asc
 
 https://maxng-assesment.herokuapp.com/movie/characters/1?sortBy=height&gender=female&direction=desc
