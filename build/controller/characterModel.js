@@ -99,26 +99,32 @@ function fetchAPI(gender, sortBy, direction, characterArray) {
         return __generator(this, function (_a) {
             sortValue = ['height', 'name'];
             genderValue = ['male', 'female'];
-            if (sortValue.includes(sortBy)) {
-                if (direction == 'asc') {
-                    data = characterArray.sort(function (a, b) { return a[sortBy] - b[sortBy]; });
-                    // return data
-                }
-                else if (direction == 'desc') {
-                    data = characterArray.sort(function (a, b) { return b[sortBy] - a[sortBy]; });
-                    // return data
+            try {
+                if (sortValue.includes(sortBy)) {
+                    if (direction == 'asc') {
+                        data = characterArray.sort(function (a, b) { return a[sortBy] - b[sortBy]; });
+                        // return data
+                    }
+                    else if (direction == 'desc') {
+                        data = characterArray.sort(function (a, b) { return b[sortBy] - a[sortBy]; });
+                        // return data
+                    }
+                    else {
+                        throw new Error("sortBy parameter is invalid");
+                    }
                 }
                 else {
                     throw new Error("sortBy parameter is invalid");
                 }
+                if (genderValue.includes(gender)) {
+                    data = characterArray.filter(function (item) { return item.gender === gender; });
+                }
+                return [2 /*return*/, data];
             }
-            else {
-                throw new Error("sortBy parameter is invalid");
+            catch (error) {
+                console.log(error.message);
             }
-            if (genderValue.includes(gender)) {
-                data = characterArray.filter(function (item) { return item.gender === gender; });
-            }
-            return [2 /*return*/, data];
+            return [2 /*return*/];
         });
     });
 }

@@ -12,6 +12,7 @@ var dotenv_1 = __importDefault(require("dotenv"));
 var index_1 = __importDefault(require("./routes/index"));
 var users_1 = __importDefault(require("./routes/users"));
 var MaxndTask_1 = __importDefault(require("./routes/MaxndTask"));
+// import {CommentController} from "./controller/comment.controller"
 dotenv_1.default.config();
 // if (result.error) {
 //   throw result.error

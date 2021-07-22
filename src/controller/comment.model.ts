@@ -16,7 +16,10 @@ CommentModel.findAll = function (callback: any) {
   sql.query(
     "SELECT * FROM maxnd_comment ORDER BY id DESC",
     (err, rows, fields) => {
-      if (err) return callback(true, null);
+      if (err) {
+        return callback(true, null);
+      }
+    
       else {
         return callback(null, rows);
       }

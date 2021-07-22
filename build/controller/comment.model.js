@@ -19,8 +19,9 @@ CommentModel.makeComment = function (data, callback) {
 };
 CommentModel.findAll = function (callback) {
     connection_1.default.query("SELECT * FROM maxnd_comment ORDER BY id DESC", function (err, rows, fields) {
-        if (err)
+        if (err) {
             return callback(true, null);
+        }
         else {
             return callback(null, rows);
         }

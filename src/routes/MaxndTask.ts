@@ -7,13 +7,12 @@ import { CommentController } from "../controller/comment.controller";
 import { getAMovie } from "../controller/oneDataModel"
 
 
-
-router.get("/one-movie/:id",getAMovie)
-router.get("/", getMovieNames );
+router.get("/comments", CommentController.getAllComments);
+router.get("/:id", getAMovie)
+router.get("/", getMovieNames);
 router.get("/singleMovie", getCharacterByName)
 router.get("/characters/:id", getMovieCharacters)
-router.get("/comment", CommentController.getAllComments);
 router.post("/comment/create", CommentController.makeCommment);
-router.get("/:id", CommentController.findByMovie);
+router.get("/comment/:id", CommentController.findByMovie);
 
 export default router;

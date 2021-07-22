@@ -95,8 +95,8 @@ CommentController.findByMovie = function (req, res) {
     var id = Number(req.params.id);
     comment_model_1.CommentModel.findByMovie(id, function (err, data) {
         if (err)
-            res.status(500).json({ error: "server error" });
+            res.status(500).json({ Message: "server error" });
         else
-            res.status(200).json(data);
+            res.status(200).json({ Message: "succesful", data: data });
     });
 };

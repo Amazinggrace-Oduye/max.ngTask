@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "start:dev": "nodemon --watch src/ --exec \"yarn serve\" -e ts",
+    "start:dev": "nodemon ./bin/www",
     "serve": "tsc && node ./bin/www"
   },
   "dependencies": {

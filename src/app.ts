@@ -4,10 +4,10 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import dotenv from "dotenv";
-
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 import starWarRouter from "./routes/MaxndTask";
+// import {CommentController} from "./controller/comment.controller"
 
 dotenv.config()
 
@@ -18,6 +18,7 @@ dotenv.config()
 // console.log(result.parsed)
 
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/movie', starWarRouter)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

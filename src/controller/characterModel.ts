@@ -1,11 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import axios from 'axios';
 
-interface Character {
-    characterInfo: Record<string, any>[],
-    totalCharacter: number,
-    charactersTotalHeight: string,
-}
 
 
 export const getMovieCharacters = async (req: Request, res: Response) => {
@@ -22,18 +17,14 @@ export const getMovieCharacters = async (req: Request, res: Response) => {
         
         let characterArray:Record<string, any>[] = [];
         let characterUrl: string = '';
-        // let sortedData: any;
-        // let heightCount = 0;
-        // let heightInfo: string;
-        // let result: Character;
+     
         for (let i = 0; i < info.characters.length; i++) {
             characterUrl = info.characters[i]
             let characterDetails = await axios.get(characterUrl)
             let characterData = characterDetails.data
 
             characterArray.push(characterData)
-            // for (let j = 0; j < info.length; j++) {
-            // }
+           
         }
         const result = await fetchAPI(gender, sortBy, direction, characterArray)
         console.log(result)
@@ -52,23 +43,27 @@ async function fetchAPI(gender = '', sortBy = "id", direction = "asc", character
     let data;
     const sortValue = ['height', 'name']
     const genderValue = ['male', 'female']
-
-    if (sortValue.includes(sortBy)) {
-        if (direction == 'asc') {
-            data = characterArray.sort((a, b) => a[sortBy] - b[sortBy])
-            // return data
-        } else if (direction == 'desc') {
-            data = characterArray.sort((a, b) => b[sortBy] - a[sortBy])
-            // return data
+    try {
+        if (sortValue.includes(sortBy)) {
+            if (direction == 'asc') {
+                data = characterArray.sort((a, b) => a[sortBy] - b[sortBy])
+                // return data
+            } else if (direction == 'desc') {
+                data = characterArray.sort((a, b) => b[sortBy] - a[sortBy])
+                // return data
+            } else {
+                throw new Error("sortBy parameter is invalid")
+            }
         } else {
             throw new Error("sortBy parameter is invalid")
         }
-    } else {
-        throw new Error("sortBy parameter is invalid")
+        if (genderValue.includes(gender)) {
+            data = characterArray.filter((item: Record<string, any>) => item.gender === gender)
+        }
+        return data
+    } catch (error) {
+        console.log(error.message)
     }
-    if (genderValue.includes(gender)) {
-        data = characterArray.filter((item:Record<string,any>) => item.gender === gender)
-    }
-    return data
+
 }
 
